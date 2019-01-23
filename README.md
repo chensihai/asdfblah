@@ -1,6 +1,7 @@
 # asdfblah
 
-php version require >7.0
+php version require >=7.0
+
 start server php -S 192.168.118.128:3333 proxy.php &
 
 
