@@ -3,10 +3,10 @@
 php version require >=7.0
 
 To start server,
- php -S 192.168.118.128:3333 proxy.php &
+ php -S localhost:8000 proxy.php &
 
 
- curl http://192.168.118.128:3333/proxy/http://httpbin.org/get
+ curl http://localhost:8000/proxy/http://httpbin.org/get
 response
 string(159) "{
   "args": {},
@@ -20,7 +20,7 @@ string(159) "{
 "
 
 
-curl -X POST -d asdf=blah  http://192.168.118.128:3333/proxy/http://httpbin.org/post
+curl -X POST -d asdf=blah  http://localhost:8000/proxy/http://httpbin.org/post
 response 
 string(331) "{
   "args": {},
