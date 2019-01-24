@@ -3,7 +3,7 @@ $request=$_SERVER['REQUEST_URI'];
 //var_dump($_SERVER);
 //var_dump($_POST);
 $request=substr($request,7);
-$method=str_replace('http://httpbin.org/','',$request);
+$method=str_replace('http://httpbin.org/','',$request);//fixed domain here, can be improved to any domain
 if($method=='get')
 $content=file_get_contents($request);
 elseif($method=='post')
@@ -24,5 +24,8 @@ $context_options = array (
 $context = stream_context_create($context_options);
 //var_dump($context);
 $content = file_get_contents($request, false, $context);
+}
+else{
+$content=['Method get/post missed'];
 }
 var_dump($content);
