@@ -1,14 +1,10 @@
 <?php
 $requests=$_SERVER['REQUEST_URI'];
-preg_match_all('/^\/proxy\/(.*)\/(.*)/',$requests,$parse); 
+preg_match_all('/^\/proxy\/(.*)/',$requests,$parse); 
 $request=$parse[1][0];
-$method=$parse[2][0];
 
-if($request=='http://httpbin.org') $request=$request.'/'.$method;
-
-if($method=='get')
-  $content=file_get_contents($request);
-elseif($method=='post')
+//if($request=='http://httpbin.org') $request=$request.'/'.$method;
+if(isset($_POST)&&empty($_POST))
 {
 
   $data = $_POST;
@@ -28,7 +24,7 @@ elseif($method=='post')
   //echo $request;
   $content = file_get_contents($request, false, $context);
 }
-else{
-  $content=['Method get/post missed'];
-}
+else
+  $content=file_get_contents($request);
+  
 var_dump($content);
