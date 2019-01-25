@@ -1,9 +1,15 @@
 <?php
 $request=$_SERVER['REQUEST_URI'];
 //var_dump($_SERVER);
-//var_dump($_POST);
-$request=substr($request,7);
-$method=str_replace('http://httpbin.org/','',$request);//fixed domain here, can be improved to any domain
+preg_match_all('/^\/proxy\/(.*)\/(.*)/',$request,$parse); 
+//var_dump($parse);
+//$request=substr($request,7);
+//$method=str_replace('http://httpbin.org/','',$request);//fixed domain here, can be improved to any domain
+$request=$parse[1][0];
+$method=$parse[2][0];
+
+if($request=='http://httpbin.org') $request=$request.'/'.$method;
+
 if($method=='get')
 $content=file_get_contents($request);
 elseif($method=='post')
@@ -23,6 +29,7 @@ $context_options = array (
 
 $context = stream_context_create($context_options);
 //var_dump($context);
+//echo $request;
 $content = file_get_contents($request, false, $context);
 }
 else{
