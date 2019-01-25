@@ -1,6 +1,6 @@
 <?php
-$request=$_SERVER['REQUEST_URI'];
-preg_match_all('/^\/proxy\/(.*)\/(.*)/',$request,$parse); 
+$requests=$_SERVER['REQUEST_URI'];
+preg_match_all('/^\/proxy\/(.*)\/(.*)/',$requests,$parse); 
 $request=$parse[1][0];
 $method=$parse[2][0];
 
