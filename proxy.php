@@ -5,7 +5,7 @@ $request=$parse[1][0];
 
 
 //if($request=='http://httpbin.org') $request=$request.'/'.$method;
-if(isset($_POST)&&empty($_POST))
+if(isset($_POST)&&!empty($_POST))
 {
 
   $data = $_POST;
